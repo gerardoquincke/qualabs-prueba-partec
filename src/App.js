@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { getModuleList } from './parteA';
+import ModuleMenu from './ModuleMenu';
+import JsonFileSelector from './JsonFileSelector';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+    const [jsonLoaded, setJsonLoaded] = useState(false);
+    const [clicked, setClicked] = useState(false);
+    const [moduleList, setModuleList] = useState([]);
+
+    useEffect( () => {
+        setModuleList(getModuleList())
+        setClicked(false)
+    }, [clicked, jsonLoaded]);
+
+    return (
+        <div className='ui container'>
+            <JsonFileSelector setJsonLoaded={setJsonLoaded} setClicked={setClicked} />
+            <ModuleMenu
+                modules={moduleList}
+            />
+        </div>
+    );
 }
 
 export default App;
