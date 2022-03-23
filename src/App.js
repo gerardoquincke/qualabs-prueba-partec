@@ -6,7 +6,7 @@ import JsonFileSelector from './JsonFileSelector';
 const App = () => {
 
     const [jsonLoaded, setJsonLoaded] = useState(false);
-    const [clicked, setClicked] = useState(false);
+    const [clicked, setClicked] = useState(false); // sin este estado, no renderiza 100% bien ante cambios
     const [moduleList, setModuleList] = useState([]);
 
     useEffect( () => {

@@ -9,7 +9,7 @@ const JsonFileSelector = ({ setJsonLoaded, setClicked }) => {
     // const [jsonLoaded, setJsonLoaded] = useState(false);
 
    
-    useEffect( () => {
+    useEffect( () => { // no me gusta como quedo / a corregir
         if (jsonList && jsonList.length !== 0) {
             allData = {
                 "auth_module": {},
@@ -32,7 +32,7 @@ const JsonFileSelector = ({ setJsonLoaded, setClicked }) => {
             allData = {}
             setJsonLoaded(false)
         }
-    }, [jsonList]);
+    }, [jsonList]); // ojo, warning React Hook useEffect has a missing dependency: 'setJsonLoaded'.
     
     const readFileAsync = file => {
         return new Promise((resolve, reject) => {
@@ -56,7 +56,7 @@ const JsonFileSelector = ({ setJsonLoaded, setClicked }) => {
             console.log('Promise then ...', values);
             setJsonList(values);
         }).catch(reason => {
-            console.log('Promise catch ...',reason);
+            console.log('Promise catch ...', reason);
             setJsonList(null);
         })
     }
